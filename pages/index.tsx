@@ -1,34 +1,40 @@
 import * as React from 'react';
-import type { NextPage } from 'next';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Link from 'next/link'
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Table from "../components/Table";
 
 
-const Home: NextPage = () => {
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+
+export default function BasicGrid() {
   return (
-    <Container maxWidth="lg">
-      <Box
-        sx={{
-          my: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Typography variant="h4" component="h1" gutterBottom>
-          MUI v5 + Next.js with TypeScript example
-        </Typography>
-        <Link href="/login" >
-          Go to the login page
-        </Link>
-     
-  
-      </Box>
-    </Container>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12}> 
+          <Container maxWidth="sm">
+            <Button fullWidth style={{margin:"50px auto auto auto"}} variant="contained">Add New </Button>
+          </Container>
+        </Grid>
+      </Grid>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          
+            <Table />
+        </Grid>
+      </Grid>
+    </Box>
   );
-};
+}
 
-export default Home;
+
